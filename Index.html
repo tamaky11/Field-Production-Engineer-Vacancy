@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recruitment Field Production Engineer (TPC) - Jambi Province</title>
+<style>
+  :root{
+    --yellow:#ffc400;
+    --yellow-soft:#ffdb5c;
+    --amber:#ff9d00;
+    --red:#ff3b30;
+    --red-deep:#e01b12;
+    --crimson:#c81e1e;
+
+    --ink:#2a1a10;
+    --ink-soft:#5c4433;
+    --ink-mute:#8a7565;
+
+    --glass-bg:rgba(255,255,255,.42);
+    --glass-bg-strong:rgba(255,255,255,.6);
+    --glass-border:rgba(255,255,255,.75);
+    --glass-shadow:0 20px 50px rgba(200,60,20,.18);
+
+    color-scheme: light;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+
+  body{
+    font-family:'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color:var(--ink);
+    min-height:100vh;
+    overflow-x:hidden;
+    line-height:1.55;
+    background:#fff5e6;
+  }
+
+  .bg{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+    background:
+      linear-gradient(135deg, #fff8e1 0%, #ffe9b8 22%, #ffcf7a 45%, #ffab5e 65%, #ff7a5c 82%, #ff4d4d 100%);
+  }
+  .bg::before,.bg::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.7;
+  }
+  .bg::before{
+    width:60vw;height:60vw;
+    top:-18vw;left:-12vw;
+    background:radial-gradient(circle, #fff2a8 0%, #ffd34d 45%, transparent 70%);
+    animation:float1 16s ease-in-out infinite;
+  }
+  .bg::after{
+    width:55vw;height:55vw;
+    bottom:-20vw;right:-14vw;
+    background:radial-gradient(circle, #ffb36b 0%, #ff5f4d 45%, transparent 72%);
+    animation:float2 19s ease-in-out infinite;
+  }
+  @keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(4vw,3vw) scale(1.06)}}
+  @keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-4vw,-3vw) scale(1.08)}}
+
+  .bg .grid{
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.35) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
+    background-size:60px 60px;
+    mask-image:radial-gradient(ellipse at 50% 45%, #000 30%, transparent 80%);
+    -webkit-mask-image:radial-gradient(ellipse at 50% 45%, #000 30%, transparent 80%);
+    animation:gridMove 30s linear infinite;
+  }
+  @keyframes gridMove{from{background-position:0 0, 0 0}to{background-position:60px 60px, 60px 60px}}
+
+  .gear{
+    position:absolute;
+    opacity:.30;
+    animation:spin 30s linear infinite;
+    filter:drop-shadow(0 6px 18px rgba(200,60,20,.18));
+  }
+  .gear.g1{top:6%; left:5%; width:150px; stroke:#ff8a00}
+  .gear.g2{top:60%; right:4%; width:120px; stroke:#e01b12; animation-duration:38s; animation-direction:reverse}
+  .gear.g3{top:34%; left:46%; width:80px; stroke:#ffb300; animation-duration:48s}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .rig{
+    position:absolute;
+    bottom:-6px;
+    right:2%;
+    width:min(420px, 55vw);
+    opacity:.45;
+    animation:floatRig 9s ease-in-out infinite;
+    filter:drop-shadow(0 8px 20px rgba(180,40,20,.15));
+  }
+  .rig.left{left:-3%; right:auto; width:min(320px, 45vw); opacity:.32; animation-delay:-4s;}
+  @keyframes floatRig{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+  .wrap{position:relative; z-index:2; max-width:980px; margin:0 auto; padding:52px 18px 90px;}
+
+  .hero{text-align:center;margin-bottom:34px}
+
+  .badge{
+    display:inline-flex; align-items:center; gap:9px;
+    font-size:.72rem; letter-spacing:.22em; font-weight:800;
+    text-transform:uppercase; color:#b3200f;
+    background:rgba(255,255,255,.55);
+    border:1px solid rgba(255,255,255,.85);
+    padding:9px 20px; border-radius:999px; margin-bottom:16px;
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    box-shadow:0 8px 22px rgba(200,60,20,.15);
+  }
+  .badge::before{
+    content:""; width:8px;height:8px;border-radius:50%;
+    background:linear-gradient(135deg, var(--yellow), var(--red));
+    box-shadow:0 0 10px rgba(255,80,30,.8);
+    animation:pulse 1.8s infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.7)}}
+
+  .hero h1{
+    font-size:clamp(1.6rem, 4vw, 2.6rem);
+    line-height:1.2; font-weight:900; letter-spacing:-.4px;
+    color:#7a1408; text-shadow:0 2px 18px rgba(255,255,255,.6);
+    margin-bottom:0;
+  }
+  .hero h1 span{
+    background:linear-gradient(100deg,#ffb300 0%, #ff6a00 45%, #e01b12 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+
+  .loc{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.95rem; font-weight:600; color:var(--ink-soft);
+    background:rgba(255,255,255,.55);
+    border:1px solid rgba(255,255,255,.85);
+    padding:9px 20px; border-radius:999px;
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    box-shadow:0 8px 22px rgba(200,60,20,.12);
+    margin-top:16px;
+  }
+  .loc strong{color:#c81e1e}
+
+  .card{
+    position:relative;
+    background:var(--glass-bg);
+    border:1.5px solid var(--glass-border);
+    border-radius:26px;
+    padding:38px clamp(18px, 4vw, 46px) 42px;
+    backdrop-filter:blur(22px) saturate(160%);
+    -webkit-backdrop-filter:blur(22px) saturate(160%);
+    box-shadow:var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,.9), inset 0 -1px 0 rgba(255,255,255,.35);
+  }
+  .card::before{
+    content:""; position:absolute; top:0;left:0;right:0; height:45%;
+    border-radius:26px 26px 60% 60%;
+    background:linear-gradient(180deg, rgba(255,255,255,.55), transparent);
+    pointer-events:none;
+  }
+
+  .section-title{
+    display:flex; align-items:center; gap:12px;
+    font-size:.76rem; letter-spacing:.2em; font-weight:800;
+    text-transform:uppercase; color:#c81e1e;
+    margin:34px 0 20px;
+  }
+  .section-title:first-of-type{margin-top:0}
+  .section-title::after{
+    content:""; flex:1; height:1px;
+    background:linear-gradient(90deg, rgba(255,80,30,.55), transparent);
+  }
+
+  .field{margin-bottom:22px;position:relative}
+
+  .field .lbl, .field > .lbl{
+    display:block; font-size:.9rem; font-weight:700;
+    color:var(--ink); margin-bottom:9px;
+  }
+
+  .req{color:var(--red);margin-left:3px}
+
+  input[type=text],input[type=email],input[type=number],
+  input[type=date],select,textarea{
+    width:100%; padding:13px 15px; border-radius:14px;
+    background:rgba(255,255,255,.6);
+    border:1.5px solid rgba(255,255,255,.9);
+    color:var(--ink); font-size:.95rem; font-family:inherit;
+    transition:border-color .2s, box-shadow .2s, background .2s;
+    outline:none;
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    box-shadow:inset 0 1px 3px rgba(200,60,20,.06);
+  }
+  textarea{resize:vertical;min-height:84px}
+  input::placeholder, textarea::placeholder{color:#b09b8a}
+
+  input:focus, select:focus, textarea:focus{
+    border-color:#ff8a1e; background:rgba(255,255,255,.85);
+    box-shadow:0 0 0 4px rgba(255,138,30,.22), inset 0 1px 3px rgba(200,60,20,.06);
+  }
+
+  select option{background:#fff;color:var(--ink)}
+
+  .hint{display:block;font-size:.76rem;color:var(--ink-mute);margin-top:6px}
+
+  .err{
+    display:block; font-size:.78rem; font-weight:600;
+    color:#c81e1e; margin-top:6px; min-height:0;
+  }
+
+  .field.invalid input,.field.invalid select,.field.invalid textarea{
+    border-color:#ff3b30; background:rgba(255,240,238,.9);
+    box-shadow:0 0 0 4px rgba(255,59,48,.18);
+  }
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+
+  .pills{display:flex;flex-wrap:wrap;gap:10px}
+  .pill{position:relative;cursor:pointer}
+  .pill input{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+
+  .pill span{
+    display:inline-block; padding:10px 22px; border-radius:999px;
+    border:1.5px solid rgba(255,255,255,.9);
+    background:rgba(255,255,255,.55);
+    font-size:.88rem; font-weight:700; color:var(--ink-soft);
+    transition:.2s; user-select:none;
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    box-shadow:0 4px 12px rgba(200,60,20,.08);
+  }
+  .pill:hover span{
+    border-color:#ffb300; background:rgba(255,255,255,.8);
+    color:var(--ink); transform:translateY(-1px);
+  }
+  .pill input:checked + span{
+    background:linear-gradient(135deg, var(--yellow) 0%, var(--amber) 40%, var(--red) 100%);
+    border-color:transparent; color:#fff;
+    box-shadow:0 10px 24px rgba(255,90,20,.42);
+    text-shadow:0 1px 2px rgba(140,30,0,.28);
+  }
+
+  .other-input{margin-top:12px}
+
+  .drive-box{
+    border:1.5px dashed rgba(255,138,30,.65);
+    background:rgba(255,255,255,.5);
+    border-radius:16px; padding:22px; text-align:center;
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  }
+
+  .drive-btn{
+    display:inline-flex; align-items:center; gap:11px;
+    padding:13px 28px; border-radius:13px;
+    border:none; cursor:pointer;
+    background:linear-gradient(135deg, #ffb300 0%, #ff6a00 55%, #e01b12 100%);
+    color:#fff; font-weight:800; font-size:.92rem; text-decoration:none;
+    box-shadow:0 12px 28px rgba(255,90,20,.42);
+    transition:transform .18s, box-shadow .18s;
+    text-shadow:0 1px 2px rgba(140,30,0,.25);
+  }
+  .drive-btn:hover{transform:translateY(-2px); box-shadow:0 16px 34px rgba(255,90,20,.55)}
+  .drive-btn svg{width:20px;height:20px;fill:#fff}
+
+  .file-name-info{
+    margin-top:12px; font-weight:700; color:#1a7f37; font-size:.88rem;
+    word-break:break-all;
+  }
+
+  .submit-wrap{margin-top:38px;text-align:center}
+
+  .submit-btn{
+    position:relative;
+    display:inline-flex; align-items:center; justify-content:center; gap:11px;
+    width:100%; max-width:440px; padding:18px 30px;
+    border:none; border-radius:15px;
+    font-family:inherit; font-size:1.02rem; font-weight:900;
+    letter-spacing:.06em; text-transform:uppercase;
+    color:#fff; cursor:pointer;
+    background:linear-gradient(120deg, #ffc400 0%, #ff8a00 45%, #ff3b30 100%);
+    box-shadow:0 18px 40px rgba(255,80,20,.45), inset 0 1px 0 rgba(255,255,255,.5);
+    transition:transform .18s, box-shadow .18s;
+    overflow:hidden;
+    text-shadow:0 1px 3px rgba(140,30,0,.32);
+  }
+  .submit-btn:hover{transform:translateY(-3px); box-shadow:0 24px 52px rgba(255,80,20,.6)}
+  .submit-btn:disabled{opacity:.75; cursor:not-allowed; transform:none}
+
+  .required-note{
+    text-align:center; font-size:.78rem; font-weight:600;
+    color:var(--ink-mute); margin-top:16px;
+  }
+
+  .spinner{
+    width:18px;height:18px;
+    border:2.5px solid rgba(255,255,255,.4);
+    border-top-color:#fff;
+    border-radius:50%;
+    animation:spinBtn .7s linear infinite;
+    display:inline-block;
+  }
+  @keyframes spinBtn{to{transform:rotate(360deg)}}
+
+  .overlay{
+    position:fixed; inset:0; z-index:50;
+    display:none; align-items:center; justify-content:center;
+    padding:22px;
+    background:rgba(120,30,0,.32);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  }
+  .overlay.show{display:flex;animation:fadeIn .3s ease}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+  .modal{
+    position:relative; max-width:560px; width:100%; text-align:center;
+    padding:48px clamp(22px, 5vw, 50px); border-radius:26px;
+    background:rgba(255,255,255,.7);
+    border:1.5px solid rgba(255,255,255,.95);
+    backdrop-filter:blur(28px) saturate(160%);
+    -webkit-backdrop-filter:blur(28px) saturate(160%);
+    box-shadow:0 40px 90px rgba(180,40,10,.35), inset 0 1px 0 rgba(255,255,255,.9);
+    animation:popIn .45s cubic-bezier(.2,.9,.3,1.3);
+  }
+  @keyframes popIn{from{opacity:0; transform:translateY(28px) scale(.94)}to{opacity:1; transform:translateY(0) scale(1)}}
+
+  .check-circle{
+    width:96px;height:96px; margin:0 auto 26px;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, rgba(255,196,0,.35), rgba(255,59,48,.35));
+    border:2px solid rgba(255,255,255,.9);
+    box-shadow:0 12px 30px rgba(255,90,20,.28);
+  }
+  .check-circle svg{
+    width:46px;height:46px; stroke:#e01b12; stroke-width:4;
+    fill:none; stroke-linecap:round; stroke-linejoin:round;
+  }
+
+  .modal h2{
+    font-size:1.4rem; font-weight:900; margin-bottom:16px;
+    background:linear-gradient(100deg,#ffb300, #ff4d1a 60%, #c81e1e);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .modal p{color:var(--ink-soft); font-size:1rem; line-height:1.75; font-weight:500;}
+  .modal p .hl{color:#c81e1e;font-weight:800}
+
+  .modal .close-btn{
+    margin-top:32px; padding:14px 44px; border-radius:13px;
+    border:1.5px solid rgba(255,255,255,.95);
+    background:linear-gradient(135deg, #ffb300, #ff4d1a);
+    color:#fff; font-family:inherit; font-weight:800;
+    font-size:.9rem; letter-spacing:.08em; text-transform:uppercase;
+    cursor:pointer; transition:.2s;
+    box-shadow:0 12px 28px rgba(255,80,20,.4);
+  }
+
+  @media (max-width:720px){
+    .wrap{padding:34px 13px 70px}
+    .card{padding:28px 18px 32px;border-radius:20px}
+    .grid-2{grid-template-columns:1fr;gap:0}
+    .hero h1{font-size:1.4rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg">
+  <div class="grid"></div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="badge">Recruitment</div>
+    <h1>Field Production Engineer <span>(TPC)</span></h1>
+    <p class="loc">📍 Working Location: <strong>Jambi Province, Indonesia</strong></p>
+  </header>
+
+  <div class="card">
+    <form id="recruitForm" novalidate>
+
+      <div class="section-title">Personal Data</div>
+
+      <div class="field" data-field="email">
+        <label class="lbl" for="email">Login Email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" placeholder="nama@email.com" autocomplete="email">
+        <small class="hint">Digunakan untuk generate email konfirmasi &amp; korespondensi rekrutmen.</small>
+        <span class="err"></span>
+      </div>
+
+      <div class="field" data-field="fullname">
+        <label class="lbl" for="fullname">Name <span class="req">*</span></label>
+        <input type="text" id="fullname" name="fullname" placeholder="Masukkan nama lengkap sesuai KTP">
+        <span class="err"></span>
+      </div>
+
+      <div class="grid-2">
+        <div class="field" data-field="age">
+          <label class="lbl" for="age">Age <span class="req">*</span></label>
+          <input type="number" id="age" name="age" min="17" max="65" step="1" placeholder="Contoh: 28">
+          <span class="err"></span>
+        </div>
+
+        <div class="field" data-field="gender">
+          <label class="lbl">Gender <span class="req">*</span></label>
+          <div class="pills">
+            <label class="pill"><input type="radio" name="gender" value="Male"><span>Male</span></label>
+            <label class="pill"><input type="radio" name="gender" value="Female"><span>Female</span></label>
+          </div>
+          <span class="err"></span>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="field" data-field="dob">
+          <label class="lbl" for="dob">Date of Birth <span class="req">*</span></label>
+          <input type="date" id="dob" name="dob">
+          <span class="err"></span>
+        </div>
+
+        <div class="field" data-field="pob">
+          <label class="lbl" for="pob">Place of Birth (Province) <span class="req">*</span></label>
+          <select id="pob" name="pob">
+            <option value="">-- Pilih Provinsi --</option>
+            <option>Aceh</option><option>Sumatera Utara</option><option>Sumatera Barat</option>
+            <option>Riau</option><option>Kepulauan Riau</option><option>Jambi</option>
+            <option>Bengkulu</option><option>Sumatera Selatan</option><option>Kepulauan Bangka Belitung</option>
+            <option>Lampung</option><option>Banten</option><option>DKI Jakarta</option>
+            <option>Jawa Barat</option><option>Jawa Tengah</option><option>DI Yogyakarta</option>
+            <option>Jawa Timur</option><option>Bali</option><option>Nusa Tenggara Barat</option>
+            <option>Nusa Tenggara Timur</option><option>Kalimantan Barat</option><option>Kalimantan Tengah</option>
+            <option>Kalimantan Selatan</option><option>Kalimantan Timur</option><option>Kalimantan Utara</option>
+            <option>Sulawesi Utara</option><option>Gorontalo</option><option>Sulawesi Tengah</option>
+            <option>Sulawesi Barat</option><option>Sulawesi Selatan</option><option>Sulawesi Tenggara</option>
+            <option>Maluku</option><option>Maluku Utara</option><option>Papua</option>
+            <option>Papua Barat</option><option>Papua Barat Daya</option><option>Papua Tengah</option>
+            <option>Papua Pegunungan</option><option>Papua Selatan</option>
+          </select>
+          <span class="err"></span>
+        </div>
+      </div>
+
+      <div class="field" data-field="religion">
+        <label class="lbl" for="religion">Religion <span class="req">*</span></label>
+        <select id="religion" name="religion">
+          <option value="">-- Pilih Agama --</option>
+          <option>Islam</option><option>Kristen Protestan</option><option>Katolik</option>
+          <option>Hindu</option><option>Buddha</option><option>Konghucu</option>
+        </select>
+        <span class="err"></span>
+      </div>
+
+      <div class="section-title">Domicile Address</div>
+
+      <div class="field" data-field="address">
+        <label class="lbl" for="address">Address <span class="req">*</span></label>
+        <textarea id="address" name="address" placeholder="Nama jalan, nomor rumah, RT/RW, kelurahan, kecamatan, kode pos"></textarea>
+        <span class="err"></span>
+      </div>
+
+      <div class="grid-2">
+        <div class="field" data-field="regency">
+          <label class="lbl" for="regency">Regency / City <span class="req">*</span></label>
+          <input type="text" id="regency" name="regency" placeholder="Contoh: Kab. Muaro Jambi / Kota Jambi">
+          <span class="err"></span>
+        </div>
+
+        <div class="field" data-field="domProvince">
+          <label class="lbl" for="domProvince">Province <span class="req">*</span></label>
+          <select id="domProvince" name="domProvince">
+            <option value="">-- Pilih Provinsi --</option>
+            <option>Aceh</option><option>Sumatera Utara</option><option>Sumatera Barat</option>
+            <option>Riau</option><option>Kepulauan Riau</option><option>Jambi</option>
+            <option>Bengkulu</option><option>Sumatera Selatan</option><option>Kepulauan Bangka Belitung</option>
+            <option>Lampung</option><option>Banten</option><option>DKI Jakarta</option>
+            <option>Jawa Barat</option><option>Jawa Tengah</option><option>DI Yogyakarta</option>
+            <option>Jawa Timur</option><option>Bali</option><option>Nusa Tenggara Barat</option>
+            <option>Nusa Tenggara Timur</option><option>Kalimantan Barat</option><option>Kalimantan Tengah</option>
+            <option>Kalimantan Selatan</option><option>Kalimantan Timur</option><option>Kalimantan Utara</option>
+            <option>Sulawesi Utara</option><option>Gorontalo</option><option>Sulawesi Tengah</option>
+            <option>Sulawesi Barat</option><option>Sulawesi Selatan</option><option>Sulawesi Tenggara</option>
+            <option>Maluku</option><option>Maluku Utara</option><option>Papua</option>
+            <option>Papua Barat</option><option>Papua Barat Daya</option><option>Papua Tengah</option>
+            <option>Papua Pegunungan</option><option>Papua Selatan</option>
+          </select>
+          <span class="err"></span>
+        </div>
+      </div>
+
+      <div class="section-title">Education &amp; Experience</div>
+
+      <div class="field" data-field="edu">
+        <label class="lbl">Do you have Education as Bachelor Degree in Petroleum (S1 Teknik Perminyakan)? <span class="req">*</span></label>
+        <div class="pills">
+          <label class="pill"><input type="radio" name="edu" value="Yes"><span>Yes</span></label>
+          <label class="pill"><input type="radio" name="edu" value="No"><span>No</span></label>
+          <label class="pill"><input type="radio" name="edu" value="Other"><span>Other</span></label>
+        </div>
+        <input type="text" class="other-input" id="eduOther" name="eduOther" placeholder="Sebutkan jurusan / pendidikan Anda..." hidden>
+        <span class="err"></span>
+      </div>
+
+      <div class="field" data-field="exp">
+        <label class="lbl">How many work experience as Petroleum Engineer (Production Engineer, Reservoir Engineer, Well Intervention Engineer, etc.)? <span class="req">*</span></label>
+        <div class="pills">
+          <label class="pill"><input type="radio" name="exp" value="Less than 1 year"><span>Less than 1 year</span></label>
+          <label class="pill"><input type="radio" name="exp" value="1-3 years"><span>1 - 3 years</span></label>
+          <label class="pill"><input type="radio" name="exp" value="More than 3 years"><span>More than 3 years</span></label>
+        </div>
+        <span class="err"></span>
+      </div>
+
+      <div class="field" data-field="lift">
+        <label class="lbl">Do you have experience in Artificial Lift, Well Surveillance &amp; Well Intervention? <span class="req">*</span></label>
+        <div class="pills">
+          <label class="pill"><input type="radio" name="lift" value="Yes"><span>Yes</span></label>
+          <label class="pill"><input type="radio" name="lift" value="No"><span>No</span></label>
+          <label class="pill"><input type="radio" name="lift" value="Other"><span>Other</span></label>
+        </div>
+        <input type="text" class="other-input" id="liftOther" name="liftOther" placeholder="Jelaskan pengalaman Anda..." hidden>
+        <span class="err"></span>
+      </div>
+
+      <div class="field" data-field="salary">
+        <label class="lbl" for="salary">Expected Salary (in IDR per month) <span class="req">*</span></label>
+        <input type="text" id="salary" name="salary" inputmode="numeric" placeholder="Rp 10,000,000" autocomplete="off">
+        <span class="err"></span>
+      </div>
+
+      <!-- SECTION UPLOAD CV BARU -->
+      <div class="section-title">Document Submission</div>
+
+      <div class="field" data-field="cv">
+        <label class="lbl">Upload CV <span class="req">*</span></label>
+        <div class="drive-box">
+          <p class="hint" style="margin:0 0 15px;font-size:.85rem;color:var(--ink-soft);font-weight:600">
+            Pilih file <strong>CV &amp; Resume</strong> Anda (format PDF, maks. 5 MB):
+          </p>
+          
+          <!-- Hidden Native File Input -->
+          <input type="file" id="cvFileInput" accept="application/pdf,.pdf" style="display:none;">
+          
+          <button type="button" class="drive-btn" id="uploadTriggerBtn">
+            <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+            Pilih File CV
+          </button>
+          
+          <div class="file-name-info" id="fileNameDisplay"></div>
+        </div>
+        <span class="err"></span>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span id="btnText">Submit Application</span>
+        </button>
+        <p class="required-note"><span class="req">*</span> Semua kolom wajib diisi (all fields are required)</p>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="check-circle">
+      <svg viewBox="0 0 52 52"><path d="M14 27 L23 36 L38 18"/></svg>
+    </div>
+    <h2>Application Submitted Successfully</h2>
+    <p>
+      Your CV and resume is being <span class="hl">review</span>, please waiting process.
+      For selected candidate will inform directly.
+      <br><br>
+      <strong>Thank you for your attention.</strong>
+    </p>
+    <button class="close-btn" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // URL Google Apps Script Web App
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby9_ITqthl_qlD84y4uCOMXvv4njHD2oEqkLMtOYRuD8sEg2QVOP9CM_dCesFK8zFmb/exec';
+
+  const form = document.getElementById('recruitForm');
+  const overlay = document.getElementById('overlay');
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('btnText');
+  
+  const uploadTriggerBtn = document.getElementById('uploadTriggerBtn');
+  const cvFileInput = document.getElementById('cvFileInput');
+  const fileNameDisplay = document.getElementById('fileNameDisplay');
+
+  // Trigger file chooser saat tombol diklik
+  uploadTriggerBtn.addEventListener('click', function(){
+    cvFileInput.click();
+  });
+
+  // Tampilkan nama file ketika file dipilih
+  cvFileInput.addEventListener('change', function(){
+    if(this.files && this.files[0]){
+      fileNameDisplay.textContent = '📄 Selected File: ' + this.files[0].name;
+      const f = fieldOf(cvFileInput);
+      if(f) f.classList.remove('invalid');
+    } else {
+      fileNameDisplay.textContent = '';
+    }
+  });
+
+  function fieldOf(el){ return el.closest('.field'); }
+
+  function markInvalid(fieldEl, msg){
+    if(!fieldEl) return;
+    fieldEl.classList.add('invalid');
+    const err = fieldEl.querySelector('.err');
+    if(err) err.textContent = msg;
+  }
+
+  function clearErrors(){
+    document.querySelectorAll('.field.invalid').forEach(f => f.classList.remove('invalid'));
+    document.querySelectorAll('.err').forEach(e => e.textContent = '');
+  }
+
+  function radioValue(name){
+    const el = form.querySelector('input[name="'+name+'"]:checked');
+    return el ? el.value : '';
+  }
+
+  function bindOther(radioName, inputId){
+    const input = document.getElementById(inputId);
+    form.querySelectorAll('input[name="'+radioName+'"]').forEach(function(r){
+      r.addEventListener('change', function(){
+        const isOther = radioValue(radioName) === 'Other';
+        input.hidden = !isOther;
+        if(isOther){
+          setTimeout(function(){ input.focus(); }, 60);
+        } else {
+          input.value = '';
+          const f = fieldOf(input);
+          if(f) f.classList.remove('invalid');
+        }
+      });
+    });
+  }
+
+  bindOther('edu', 'eduOther');
+  bindOther('lift', 'liftOther');
+
+  // Format Salary
+  const salary = document.getElementById('salary');
+  salary.addEventListener('input', function(){
+    let digits = salary.value.replace(/[^0-9]/g, '');
+    digits = digits.replace(/^0+/, '');
+    if(digits === ''){
+      salary.value = '';
+      return;
+    }
+    salary.value = 'Rp ' + digits.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  });
+
+  // Validasi Form
+  function validate(){
+    clearErrors();
+    let ok = true;
+
+    const email = document.getElementById('email');
+    const emailVal = email.value.trim();
+    if(!emailVal){
+      markInvalid(fieldOf(email), 'Email wajib diisi.'); ok = false;
+    } else if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal)){
+      markInvalid(fieldOf(email), 'Format email tidak valid.'); ok = false;
+    }
+
+    const fullname = document.getElementById('fullname');
+    if(!fullname.value.trim()){
+      markInvalid(fieldOf(fullname), 'Nama wajib diisi.'); ok = false;
+    } else if(fullname.value.trim().length < 3){
+      markInvalid(fieldOf(fullname), 'Nama minimal 3 karakter.'); ok = false;
+    }
+
+    const age = document.getElementById('age');
+    const ageVal = age.value.trim();
+    if(!ageVal){
+      markInvalid(fieldOf(age), 'Umur wajib diisi.'); ok = false;
+    } else {
+      const n = Number(ageVal);
+      if(!Number.isInteger(n) || n < 17 || n > 65){
+        markInvalid(fieldOf(age), 'Umur harus angka antara 17 - 65.'); ok = false;
+      }
+    }
+
+    const dob = document.getElementById('dob');
+    if(!dob.value){
+      markInvalid(fieldOf(dob), 'Tanggal lahir wajib diisi.'); ok = false;
+    }
+
+    const pob = document.getElementById('pob');
+    if(!pob.value){ markInvalid(fieldOf(pob), 'Tempat lahir wajib dipilih.'); ok = false; }
+
+    const address = document.getElementById('address');
+    if(!address.value.trim()){ markInvalid(fieldOf(address), 'Alamat wajib diisi.'); ok = false; }
+
+    const regency = document.getElementById('regency');
+    if(!regency.value.trim()){ markInvalid(fieldOf(regency), 'Kabupaten/Kota wajib diisi.'); ok = false; }
+
+    const domProvince = document.getElementById('domProvince');
+    if(!domProvince.value){ markInvalid(fieldOf(domProvince), 'Provinsi wajib dipilih.'); ok = false; }
+
+    const religion = document.getElementById('religion');
+    if(!religion.value){ markInvalid(fieldOf(religion), 'Agama wajib dipilih.'); ok = false; }
+
+    if(!radioValue('gender')){
+      markInvalid(document.querySelector('[data-field="gender"]'), 'Gender wajib dipilih.'); ok = false;
+    }
+
+    const eduVal = radioValue('edu');
+    if(!eduVal){
+      markInvalid(document.querySelector('[data-field="edu"]'), 'Pilihan ini wajib diisi.'); ok = false;
+    } else if(eduVal === 'Other'){
+      const eduOther = document.getElementById('eduOther');
+      if(!eduOther.value.trim()){
+        markInvalid(document.querySelector('[data-field="edu"]'), 'Mohon tuliskan pendidikan/jurusan Anda.'); ok = false;
+      }
+    }
+
+    if(!radioValue('exp')){
+      markInvalid(document.querySelector('[data-field="exp"]'), 'Pengalaman kerja wajib dipilih.'); ok = false;
+    }
+
+    const liftVal = radioValue('lift');
+    if(!liftVal){
+      markInvalid(document.querySelector('[data-field="lift"]'), 'Pilihan ini wajib diisi.'); ok = false;
+    } else if(liftVal === 'Other'){
+      const liftOther = document.getElementById('liftOther');
+      if(!liftOther.value.trim()){
+        markInvalid(document.querySelector('[data-field="lift"]'), 'Mohon tuliskan pengalaman Anda.'); ok = false;
+      }
+    }
+
+    const salVal = salary.value.replace(/[^0-9]/g, '');
+    if(!salVal || Number(salVal) === 0){
+      markInvalid(fieldOf(salary), 'Expected salary wajib diisi.'); ok = false;
+    }
+
+    // Validasi file CV
+    if(!cvFileInput.files || cvFileInput.files.length === 0){
+      markInvalid(fieldOf(cvFileInput), 'File CV wajib diupload.'); ok = false;
+    } else {
+      const file = cvFileInput.files[0];
+      if(file.size > 5 * 1024 * 1024){
+        markInvalid(fieldOf(cvFileInput), 'Ukuran file maksimal 5 MB.'); ok = false;
+      }
+    }
+
+    return ok;
+  }
+
+  // Fungsi konversi file ke Base64
+  function readFileAsBase64(file){
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result.split(',')[1];
+        resolve(base64);
+      };
+      reader.onerror = error => reject(error);
+      reader.readAsDataURL(file);
+    });
+  }
+
+  let isSubmitting = false;
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    if(isSubmitting) return;
+
+    if(!validate()){
+      const firstInvalid = document.querySelector('.field.invalid');
+      if(firstInvalid){
+        firstInvalid.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+      return;
+    }
+
+    isSubmitting = true;
+    submitBtn.disabled = true;
+    btnText.innerHTML = '<span class="spinner"></span> Uploading & Sending...';
+
+    try {
+      const file = cvFileInput.files[0];
+      const fileBase64 = await readFileAsBase64(file);
+
+      const formData = new FormData(form);
+      const params = new URLSearchParams();
+
+      for (const [key, value] of formData.entries()) {
+        params.append(key, value);
+      }
+
+      // Lampirkan data file CV ke parameter request
+      params.append('cvBase64', fileBase64);
+      params.append('cvFileName', file.name);
+      params.append('cvMimeType', file.type || 'application/pdf');
+
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: params.toString()
+      });
+
+      finishSubmit();
+    } catch(err) {
+      console.error('Submit error:', err);
+      isSubmitting = false;
+      submitBtn.disabled = false;
+      btnText.textContent = 'Submit Application';
+      alert('Gagal mengirim data & CV. Pastikan koneksi internet stabil.');
+    }
+  });
+
+  function finishSubmit(){
+    isSubmitting = false;
+    submitBtn.disabled = false;
+    btnText.textContent = 'Submit Application';
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    form.reset();
+    fileNameDisplay.textContent = '';
+    document.getElementById('eduOther').hidden = true;
+    document.getElementById('liftOther').hidden = true;
+  }
+
+  window.closeModal = function(){
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
+  };
+})();
+</script>
+</body>
+</html>
